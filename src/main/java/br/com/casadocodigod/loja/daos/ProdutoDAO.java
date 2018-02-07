@@ -12,7 +12,7 @@ import br.com.casadocodigod.loja.models.Produto;
 
 @Repository   //faço o spring conhecer o produto dao.
 @Component   //anotation que permite que a classe seja gerenciada pelo spring . Repository herda de component.
-@Transactional //estou dizendo que o DAO será transacional, 
+@Transactional //estou dizendo que o DAO será transacional,          
 public class ProdutoDAO {
 	
 	@PersistenceContext //aqui injeto o entitymanager
