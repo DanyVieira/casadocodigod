@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+    
+    <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <!-- diretiva que importa o jstl, esse c esta la embaixo c:-->
 <!DOCTYPE html">
 <html>
 <head>
@@ -20,7 +22,18 @@
         <label>Páginas</label>
         <input type="text" name="paginas" />
     </div>
-    <button type="submit">Cadastrar</button>
+  
+   
+    <c:forEach items="${tipos}" var="tipoPreco" varStatus="status">    <!-- aqui coloco o laço de repetição --> <!-- chamo a variavel tipos que construi no controller -->
+    <div>
+        <label>${tipoPreco}</label> <!--aqui chamo o tipopreço de cima  -->
+        <input type="text" name="precos[${status.index }].valor"/>  <!--status retorna um indice  -->
+        <input type="hidden" name= "precos[${status.index }].tipo" value="${tipoPreco}"/><!-- hidden escondido usuario não pode alterar -->
+    </div>     
+   </c:forEach>
+    
+     <button type="submit">Cadastrar</button>
+  
 	</form>
 </body>
 </html>
