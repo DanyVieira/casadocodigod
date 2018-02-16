@@ -1,5 +1,8 @@
 package br.com.casadocodigod.loja.conf;
 
+import javax.servlet.Filter;
+
+import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 //recebe as requisições e realiza as configuraçãoes básicas
@@ -20,5 +23,11 @@ public class ServletSpringMVC extends AbstractAnnotationConfigDispatcherServletI
 		 return new String[] {"/"}; //aqui digo a url que quero mapear
 	}
 	
-
+	@Override
+	protected Filter[] getServletFilters() {
+		CharacterEncodingFilter encodingFilter = new CharacterEncodingFilter();
+		encodingFilter.setEncoding("UTF-8");
+		
+		return new Filter[] {encodingFilter}; //filtro que trata da codificação 
+	}
 }
