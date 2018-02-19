@@ -7,6 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
+
+import org.jboss.logging.annotations.LoggingClass;
 
 @Entity
 public class Produto {
@@ -15,6 +18,8 @@ public class Produto {
 	private int id; 
 	
 	private String titulo;
+	
+	@Lob
 	private String descricao;
 	private int paginas;
 	
