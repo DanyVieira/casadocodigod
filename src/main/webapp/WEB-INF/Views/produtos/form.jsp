@@ -1,7 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+<%@ page language="java" contentType="text/html; charset= UTF-8"
     pageEncoding="ISO-8859-1"%>
     
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%> <!-- diretiva que importa o jstl, esse c esta la embaixo c:-->
+    <%@ taglib uri="http://www.springframework.org/tags/form"  prefix="form" %> <!-- diretiva para adicionar mensagem ao usuario form:erros -->
+    <%@ taglib uri="http://www.springframework.org/tags"  prefix="s" %> 
 <!DOCTYPE html">
 <html>
 <head>
@@ -9,18 +11,27 @@
 <title>Livro de java android</title>
 </head>
 <body>
-	<form action="/casadocodigod/produtos" method="post"> <!--aqui diz pra que controller-produtos- enviar os dados   -->
+	<form:form action="${s:mvcUrl('PC#grava').build()}" method="post" commandName="produto"> <!-- nesse caso já digo o controler pelas iniciais Produto Controller e chamo o método gravar -->		
+	<!--aqui diz pra que controller-produtos- enviar os dados   , commandname- pra não precisar ficar escrevendo produto
+	dai ele já sabe que tudo esta se referenciando a produto-->
+	<!-- o build ja constroi automaticamente se algo mudar ...exemplo mudei o nome do metodo -->
     <div>
         <label>Título</label> <!-- TITULO  -->
+       
         <input type="text" name="titulo" /> <!-- envia dados para p controllet com atributo titulo -->
+         <form:errors path= "titulo"/> <!-- tag que pega os erros de vallidação e exibe ao usuario para cada campo específico -->
     </div>
     <div>
         <label>Descrição</label>
+        
         <textarea rows="10" cols="20" name="descricao"></textarea><!-- text area com 10 linhas e 20 colunas -->
+        <form:errors path= "descricao"/>
     </div>
     <div>
         <label>Páginas</label>
+          
         <input type="text" name="paginas" />
+         <form:errors path= "paginas"/>
     </div>
   
    
@@ -34,6 +45,6 @@
     
      <button type="submit">Cadastrar</button>
   
-	</form>
+	</form:form>
 </body>
 </html>

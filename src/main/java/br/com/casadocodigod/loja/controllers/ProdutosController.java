@@ -20,7 +20,7 @@ import br.com.casadocodigod.loja.models.TipoPreco;
 import br.com.casadocodigod.loja.validation.ProdutoValidation;
 
 @Controller
-@RequestMapping("produtos")
+@RequestMapping("/produtos")
 public class ProdutosController {
 	
 	
@@ -28,8 +28,8 @@ public class ProdutosController {
 	private ProdutoDAO produtoDAO;
 	
 	@InitBinder
-	public void InitBinder(WebDataBinder binder) {//metodo que faz o bind do produtovalidation com a anotação valid
-		binder.addValidators( new ProdutoValidation());
+	public void InitBinder(WebDataBinder binder) {//metodo que faz o bind do produtovalidation com a anotação valid logo abaixo
+		binder.addValidators( new ProdutoValidation());//adiciono aqui o validador
 	}
 		
 	@RequestMapping("/form")
@@ -46,7 +46,7 @@ public class ProdutosController {
 			 RedirectAttributes redirectAttributes) {
 			//flash atribute é um pequeno escopo que dura de um request a outro
 		//redirect atribute-adiociono nele o flash, ou seja adiciono o sucesso no PROXIMOOO redirect 
-		//@valid - biblioteca usada para validar os dados 
+		//@valid - biblioteca usada para validar os dados ele chama a classe produtovalidation
 		
 		if (result.hasErrors()) {//se houver erro retorna para o form
 		 return	form();

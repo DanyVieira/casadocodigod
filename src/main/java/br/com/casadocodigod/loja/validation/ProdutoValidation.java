@@ -12,8 +12,9 @@ public class ProdutoValidation implements Validator { //ele tem que implementar 
 	
 
 @Override
-public boolean supports(Class<?> clazz) {//
+public boolean supports(Class<?> clazz) {//metodo pra saber se suporta a classe que estou enviando
 	return Produto.class.isAssignableFrom(clazz);//a classe produto pode ser validad, posso chamar o validator para produto
+	//aqui fico sabendo se posso chamar o validator para o produto
 }
 
 @Override
@@ -26,6 +27,7 @@ public void validate(Object target, Errors errors) {//target - objeto alvo que �
 //////////validação de numero de paginas (tem que ser >=0 )
 	if(produto.getPaginas()<=0) {
 		errors.rejectValue("paginas", "field.required");//nesse caso chamo a classe erro e se paginas negativas rejeito input
+		//criei o massage.properties, ele associa a cada erro uma mensagem de erro. No appwebconfigurtion a classe MessageSource fala as configurações do message.properties.
 		
 		}
 	}

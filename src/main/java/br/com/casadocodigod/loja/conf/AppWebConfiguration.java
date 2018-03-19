@@ -1,7 +1,9 @@
 package br.com.casadocodigod.loja.conf;
 
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
@@ -21,4 +23,14 @@ public class AppWebConfiguration {
 		return resolver;
 	}
 	
+	@Bean //digo que o spring ira gerenciar !
+	public MessageSource messageSource () {//aqui informo as configurações do message.properties
+		ReloadableResourceBundleMessageSource messageSource //essa classe é que retorna a configuração de mensagem de erro
+		= new ReloadableResourceBundleMessageSource(); 
+		messageSource.setBasename("/WEB-INF/message");//onde esta o arquivo de mensagem de erro
+		messageSource.setDefaultEncoding("UTF-8");//configuração de encoding
+		messageSource.setCacheSeconds(1);//quanto segundos para recarregar o reloader, da um tempo pra redigir o message.prop
+		
+		return messageSource;
+	}
 }
