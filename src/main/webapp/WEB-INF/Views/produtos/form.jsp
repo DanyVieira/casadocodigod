@@ -18,28 +18,34 @@
     <div>
         <label>Título</label> <!-- TITULO  -->
        
-        <input type="text" name="titulo" /> <!-- envia dados para p controllet com atributo titulo -->
+        <form:input path="titulo" /> <!-- envia dados para p controllet com atributo titulo -->
          <form:errors path= "titulo"/> <!-- tag que pega os erros de vallidação e exibe ao usuario para cada campo específico -->
     </div>
     <div>
         <label>Descrição</label>
         
-        <textarea rows="10" cols="20" name="descricao"></textarea><!-- text area com 10 linhas e 20 colunas -->
+        <form:textarea path="descricao" rows="10" cols="20" /><!-- text area com 10 linhas e 20 colunas -->
         <form:errors path= "descricao"/>
     </div>
     <div>
         <label>Páginas</label>
           
-        <input type="text" name="paginas" />
+        <form:input path="paginas" />
          <form:errors path= "paginas"/>
     </div>
+    <div>
+        <label>Data de Lançamento</label>
+          
+        <form:input path="dataLancamento" />
+         <form:errors path="dataLancamento"/>
+     </div>
   
    
     <c:forEach items="${tipos}" var="tipoPreco" varStatus="status">    <!-- aqui coloco o laço de repetição --> <!-- chamo a variavel tipos que construi no controller -->
     <div>
         <label>${tipoPreco}</label> <!--aqui chamo o tipopreço de cima  -->
-        <input type="text" name="precos[${status.index }].valor"/>  <!--status retorna um indice  -->
-        <input type="hidden" name= "precos[${status.index }].tipo" value="${tipoPreco}"/><!-- hidden escondido usuario não pode alterar -->
+        <form:input path="precos[${status.index }].valor"/>  <!--status retorna um indice  -->
+        <form:hidden path="precos[${status.index }].tipo" value="${tipoPreco}"/><!-- hidden escondido usuario não pode alterar -->
     </div>     
    </c:forEach>
     

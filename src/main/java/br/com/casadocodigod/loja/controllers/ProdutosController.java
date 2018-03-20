@@ -33,7 +33,7 @@ public class ProdutosController {
 	}
 		
 	@RequestMapping("/form")
-	public ModelAndView form() {
+	public ModelAndView form(Produto produto) {//no form recebo produto que irá pra o request
 		ModelAndView modelAndView = new ModelAndView("produtos/form");//nesse caso consigo mandar um objeto do model para o view
 		//produtos/form-- aqui pra onde sera enviado a view
 		modelAndView.addObject("tipos", TipoPreco.values());//aqui crio a variavek tipos e coloco dentro dela a classe enum
@@ -49,7 +49,7 @@ public class ProdutosController {
 		//@valid - biblioteca usada para validar os dados ele chama a classe produtovalidation
 		
 		if (result.hasErrors()) {//se houver erro retorna para o form
-		 return	form();
+		 return	form(produto);
 		}
 		
 		produtoDAO.gravar(produto);//grava o produto no BD.

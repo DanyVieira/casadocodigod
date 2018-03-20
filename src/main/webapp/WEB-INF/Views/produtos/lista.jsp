@@ -17,6 +17,8 @@
 		 <td>Título</td>
 		 <td>Descrição</td>
 		 <td>Páginas</td>
+		 <td>Data Lançamento</td>
+		 
 		
 		</tr>
 		<c:forEach items="${produtos}" var="produto"> <!-- aqui pego a variavel produtos que defini la no controller  e faço um bind com o objeto produto --> 
@@ -24,6 +26,7 @@
 				<td>${produto.titulo}</td> <!-- pega esses dados direto do banco enquanto houver dados! -->
 				<td>${produto.descricao}</td>
 				<td>${produto.paginas}</td>
+				<td>${produto.dataLancamento}</td>
 				
 			
 			</tr>
