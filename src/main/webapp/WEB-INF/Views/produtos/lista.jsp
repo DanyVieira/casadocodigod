@@ -27,6 +27,7 @@
 				<td>${produto.descricao}</td>
 				<td>${produto.paginas}</td>
 				<td>${produto.dataLancamento}</td>
+				<td>${produto.sumarioPath}</td>
 				
 			
 			</tr>

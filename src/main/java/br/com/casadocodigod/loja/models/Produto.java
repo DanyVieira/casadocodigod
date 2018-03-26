@@ -31,6 +31,7 @@ public class Produto {
 	@ElementCollection //essa anotação adiciona o preço como parte do produto, cria uma tabela so de preços ja relaciona aos produtos
 	private List<Preco> precos;
 	
+	private String sumarioPath; //é apenas o caminho para chegar ao file
 	
 	public String getTitulo() {
 		return titulo;
@@ -71,6 +72,15 @@ public class Produto {
 	}
 	public void setDataLancamento(Calendar dataLancamento) {
 		this.dataLancamento = dataLancamento;
+	
+	
+	
+	}
+	public String getSumarioPath() {
+		return sumarioPath;
+	}
+	public void setSumarioPath(String sumarioPath) {
+		this.sumarioPath = sumarioPath;
 	}
 	@Override
 	public String toString() {

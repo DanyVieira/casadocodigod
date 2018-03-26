@@ -11,7 +11,9 @@
 <title>Livro de java android</title>
 </head>
 <body>
-	<form:form action="${s:mvcUrl('PC#grava').build()}" method="post" commandName="produto"> <!-- nesse caso já digo o controler pelas iniciais Produto Controller e chamo o método gravar -->		
+	<form:form action="${s:mvcUrl('PC#grava').build()}" method="post" commandName="produto"
+	enctype="multipart/form-data"> <!-- diz ao request ao enviar os dados ao servidor que o arquivo é de multi informações texto imagem -->
+	 <!-- nesse caso já digo o controler pelas iniciais Produto Controller (PC) e chamo o método gravar -->		
 	<!--aqui diz pra que controller-produtos- enviar os dados   , commandname- pra não precisar ficar escrevendo produto
 	dai ele já sabe que tudo esta se referenciando a produto-->
 	<!-- o build ja constroi automaticamente se algo mudar ...exemplo mudei o nome do metodo -->
@@ -41,13 +43,18 @@
      </div>
   
    
-    <c:forEach items="${tipos}" var="tipoPreco" varStatus="status">    <!-- aqui coloco o laço de repetição --> <!-- chamo a variavel tipos que construi no controller -->
-    <div>
+   <c:forEach items="${tipos}" var="tipoPreco" varStatus="status">    <!-- aqui coloco o laço de repetição --> <!-- chamo a variavel tipos que construi no controller -->
+   	 <div>
         <label>${tipoPreco}</label> <!--aqui chamo o tipopreço de cima  -->
         <form:input path="precos[${status.index }].valor"/>  <!--status retorna um indice  -->
         <form:hidden path="precos[${status.index }].tipo" value="${tipoPreco}"/><!-- hidden escondido usuario não pode alterar -->
-    </div>     
+  	  </div>     
    </c:forEach>
+    
+      <div>
+    		<label>Sumário</label>
+            <input name="sumario" type="file" /><!-- esse sumario é um resumo que vou mandar p servidor da opção pra o usuario anexar um arquivo!! -->
+      </div>
     
      <button type="submit">Cadastrar</button>
   

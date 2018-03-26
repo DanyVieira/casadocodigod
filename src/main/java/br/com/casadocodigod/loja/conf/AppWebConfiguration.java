@@ -9,14 +9,18 @@ import org.springframework.format.datetime.DateFormatter;
 import org.springframework.format.datetime.DateFormatterRegistrar;
 import org.springframework.format.support.DefaultFormattingConversionService;
 import org.springframework.format.support.FormattingConversionService;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import br.com.casadocodigod.loja.controllers.HomeController;
 import br.com.casadocodigod.loja.daos.ProdutoDAO;
+import br.com.casadocodigod.loja.infra.FileSaver;
 
 @EnableWebMvc //aqui digo que qro utilizar a parte web do spring
-@ComponentScan(basePackageClasses= {HomeController.class,ProdutoDAO.class})//aqui indico onde esta o pacote da classe controller e o pacote da classe DAO
+@ComponentScan(basePackageClasses= {HomeController.class,ProdutoDAO.class,//aqui indico onde esta o pacote da classe controller e o pacote da classe DAO
+		FileSaver.class})//coloco o pacote do filesaver tambem
 public class AppWebConfiguration {
 
 	@Bean//essa classe é gerenciada pelo spring
@@ -50,4 +54,10 @@ public class AppWebConfiguration {
 		
 		return conversionService;
 	}
+	
+	@Bean
+	public MultipartResolver multipartResolver () {//resolvedor de arquivos de multiplos formatos
+		return new StandardServletMultipartResolver();
+	}
+	
 }
