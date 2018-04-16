@@ -80,4 +80,15 @@ public class ProdutosController {
 		return modelAndView;
 	}
 	
+	@RequestMapping ("/detalhe")
+	public ModelAndView detalhe(Integer id) {
+		ModelAndView modelAndView = new ModelAndView("produtos/detalhe");//pra onde vou mandar os detalhes q esta dentro da detalhe.jsp
+		Produto produto = produtoDAO.find(id); //coloco dentro de produto o que 
+		modelAndView.addObject("produto",produto);
+		return modelAndView;
+		
+		
+	}
+	
+	
 }
