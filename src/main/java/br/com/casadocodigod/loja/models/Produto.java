@@ -1,5 +1,6 @@
 package br.com.casadocodigod.loja.models;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -10,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
 
-import org.jboss.logging.annotations.LoggingClass;
 import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
@@ -29,7 +29,7 @@ public class Produto {
 	private Calendar dataLancamento;
 	
 	@ElementCollection //essa anotação adiciona o preço como parte do produto, cria uma tabela so de preços ja relaciona aos produtos
-	private List<Preco> precos;
+	private List<Preco> precos = new ArrayList<>();
 	
 	private String sumarioPath; //é apenas o caminho para chegar ao file
 	
